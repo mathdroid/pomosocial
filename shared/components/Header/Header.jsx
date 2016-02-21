@@ -3,58 +3,11 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 
-import {
-  Container,
-  Group,
-  NavBar,
-  amStyles,
-} from 'amazeui-touch';
-
-import LeftNav from './LeftNav';
-
-
 const clickHandler = (item, e) => {
-  // e.preventDefault();
-  // console.log(item);
+  e.preventDefault();
+  console.log(item);
 };
 
-const itemLeft = {
-  href: '/',
-  title: 'Back'
-};
-const itemRight = {
-  href: '#',
-  title: 'Right'
-};
-
-
-const itemTitle = {
-  href: '/',
-  title: 'Pomosocial'
-};
-//
-// const dataAll = {
-//   title: 'Navbar',
-//   leftNav: [{...itemLeft, icon: 'left-nav'}],
-//   rightNav: [{...itemRight, icon: 'right-nav'}],
-//   onSelect: clickHandler,
-// };
-//
-// const dataLeft = {
-//   title: 'Navbar',
-//   leftNav: [{...itemLeft, icon: 'left-nav'}],
-//   onSelect: clickHandler,
-// };
-
-let dataRight = {
-  title: <Link to="/">Home</Link>,
-  rightNav: [itemRight, itemRight],
-  onSelect: clickHandler,
-  amStyle: 'alert'
-};
-
-var inputProps = {
-};
 
 
 function Header(props, context) {
@@ -66,7 +19,18 @@ function Header(props, context) {
   //   dataRight.leftNav = [itemLeft];
   // }
   return (
-    <NavBar {...dataRight}/>
+    <div className="ui container">
+      <div className="ui large secondary inverted pointing menu">
+        <a className="toc item">
+          <i className="sidebar icon"></i>
+        </a>
+        <a className="active item">Home</a>
+        <a className="item" href="#pomodoros">Pomodoros</a>
+        <div className="right item">
+          <a className="ui inverted button" href="#" onClick={props.onClick}>Create New</a>
+        </div>
+      </div>
+    </div>
   );
 }
 

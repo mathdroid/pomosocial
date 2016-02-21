@@ -53,10 +53,6 @@ app.use('/api', pomos);
 
 // let uname = polyname();
 
-
-// <link rel="stylesheet" href="/css/amazeui.touch.css">
-// <script src="/css/amazeui.touch.js"></script>
-
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
   const cssPath = process.env.NODE_ENV === 'production' ? '/css/app.min.css' : '/css/app.css';
@@ -80,17 +76,19 @@ const renderFullPage = (html, initialState) => {
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
         <title>Pomosocial</title>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css">
         <link rel="stylesheet" href=${cssPath} />
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
       </head>
-      <body>
-        <div id="root" style="height:100%;width:100%;overflow:hidden;">${html}</div>
+      <body class="index pushable">
+        <div id="root">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
         <script src="/dist/bundle.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
       </body>
     </html>
   `;

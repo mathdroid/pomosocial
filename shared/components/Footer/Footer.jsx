@@ -2,25 +2,24 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import {
-  Container,
-} from 'amazeui-touch';
-
 function Footer(props, context) {
   const tabHomeCls = "tabbar-item " + (context.router.isActive('/', true) ? "active" : "");
   const tabInfoCls = "tabbar-item " + (context.router.isActive('/', true) ? "" : "active");
   return (
-    <nav className="tabbar tabbar-primary">
-      <Link className={tabHomeCls} to="/" icon="home">
-        <span className="icon icon-home"></span>
-        <span className="tabbar-label">Home</span>
-      </Link>
+    <div className="ui inverted vertical footer segment">
+      <div className="ui container">
+        <div className="ui stackable inverted divided equal height stackable grid">
+          <div className="sixteen wide column">
+            <h4 className="ui inverted header">Pomosocial</h4>
+            <div className="ui inverted link list">
+              <a href="#" className="item">&copy; 2016 Muhammad Mustadi</a>
+              <span><img src="http://forthebadge.com/images/badges/built-with-love.svg" /></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <Link className={tabInfoCls} to="/user" icon="person">
-        <span className="icon icon-person"></span>
-        <span className="tabbar-label">Profile</span>
-      </Link>
-    </nav>
 
  );
 }
