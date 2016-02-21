@@ -1,4 +1,4 @@
-*{
+/**{
 	margin: 0;
 	padding: 0;
 	-webkit-box-sizing: border-box;
@@ -14,7 +14,7 @@
 ::-moz-placeholder {
 	color:#aaa;
 	font-weight: 300;
-} 
+}
 :-ms-input-placeholder {
 	color:#aaa;
 	font-weight: 300;
@@ -218,4 +218,4 @@ body {
 		float: left;
 		margin-top: 16px;
 	}
-}
+}*/

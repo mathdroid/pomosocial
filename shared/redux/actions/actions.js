@@ -73,11 +73,27 @@ export function addPosts(posts) {
   };
 }
 
+export function addPomos(pomos) {
+  return {
+    type: ActionTypes.ADD_POMOS,
+    pomos,
+  };
+}
+
 export function fetchPosts() {
   return (dispatch) => {
     return fetch(`${baseURL}/api/getPosts`).
       then((response) => response.json()).
       then((response) => dispatch(addPosts(response.posts)));
+  };
+}
+
+
+export function fetchPomos() {
+  return (dispatch) => {
+    return fetch(`${baseURL}/api/getPomos`).
+      then((response) => response.json()).
+      then((response) => dispatch(addPomos(response.pomos)));
   };
 }
 

@@ -2,6 +2,7 @@
 /* eslint-disable prefer-template*/
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
+import { Button } from 'amazeui-touch';
 
 function PostListItem(props, context) {
   return (
@@ -13,7 +14,7 @@ function PostListItem(props, context) {
       </h3>
       <p className="author-name">By {props.post.name}</p>
       <p className="post-desc">{props.post.content}</p>
-      <p className="post-action"><a href="#" onClick={props.onDelete}>Delete Post</a></p>
+      <p className="post-action"><Button href="#" onClick={props.onDelete}>Delete Post</Button></p>
       <hr className="divider"/>
     </div>
   );

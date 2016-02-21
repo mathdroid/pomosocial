@@ -16,6 +16,18 @@ const postReducer = (state = initialState, action) => {
         }].concat(state.posts),
         post: state.post };
 
+    case ActionTypes.ADD_POMO :
+      return {
+        pomos: [{
+          name: action.name,
+          title: action.title,
+          content: action.content,
+          slug: action.slug,
+          cuid: action.cuid,
+          _id: action._id,
+        }].concat(state.pomos),
+        pomo: state.pomo };
+
     case ActionTypes.CHANGE_SELECTED_POST :
       return {
         posts: state.posts,

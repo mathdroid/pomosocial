@@ -1,13 +1,31 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { Link } from 'react-router';
+
+import {
+  Container,
+} from 'amazeui-touch';
 
 function Footer(props, context) {
+  const tabHomeCls = "tabbar-item " + (context.router.isActive('/', true) ? "active" : "");
+  const tabInfoCls = "tabbar-item " + (context.router.isActive('/', true) ? "" : "active");
   return (
-   <div className="footer">
-     <p>&copy; 2016 &middot; Hashnode &middot; LinearBytes Inc.</p>
-     <p>We are on Twitter : <a href="https://twitter.com/@mern_io" target="_Blank">@mern_io</a></p>
-   </div>
+    <nav className="tabbar tabbar-primary">
+      <Link className={tabHomeCls} to="/" icon="home">
+        <span className="icon icon-home"></span>
+        <span className="tabbar-label">Home</span>
+      </Link>
+
+      <Link className={tabInfoCls} to="/user" icon="person">
+        <span className="icon icon-person"></span>
+        <span className="tabbar-label">Profile</span>
+      </Link>
+    </nav>
+
  );
 }
 
+Footer.contextTypes = {
+  router: React.PropTypes.object,
+};
 export default Footer;

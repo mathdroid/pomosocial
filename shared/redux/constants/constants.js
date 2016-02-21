@@ -4,3 +4,10 @@ export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 export const ADD_POSTS = 'ADD_POSTS';
 export const ADD_SELECTED_POST = 'ADD_SELECTED_POST';
 export const DELETE_POST = 'DELETE_POST';
+
+export const ADD_POMO = 'ADD_POMO';
+export const CHANGE_SELECTED_POMO = 'CHANGE_SELECTED_POMO';
+export const ADD_POMO_REQUEST = 'ADD_POMO_REQUEST';
+export const ADD_POMOS = 'ADD_POMOS';
+export const ADD_SELECTED_POMO = 'ADD_SELECTED_POMO';
+export const DELETE_POMO = 'DELETE_POMO';

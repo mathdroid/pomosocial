@@ -28,9 +28,11 @@ import { match, RouterContext } from 'react-router';
 // Import required modules
 import routes from '../shared/routes';
 import { fetchComponentData } from './util/fetchData';
-import posts from './routes/post.routes';
-import dummyData from './dummyData';
+import pomos from './routes/api';
+// import dummyData from './dummyData';
 import serverConfig from './config';
+
+import polyname from '../lib/polyname';
 
 // MongoDB Connection
 mongoose.connect(serverConfig.mongoURL, (error, connection) => {
@@ -40,14 +42,20 @@ mongoose.connect(serverConfig.mongoURL, (error, connection) => {
   }
 
   // feed some dummy data in DB.
-  dummyData();
+  // dummyData();
 });
 
 // Apply body Parser and server public assets and routes
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../static')));
-app.use('/api', posts);
+app.use('/api', pomos);
+
+// let uname = polyname();
+
+
+// <link rel="stylesheet" href="/css/amazeui.touch.css">
+// <script src="/css/amazeui.touch.js"></script>
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -58,14 +66,27 @@ const renderFullPage = (html, initialState) => {
       <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MERN Starter - Blog App</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="viewport"
+              content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="renderer" content="webkit">
+        <!-- No Baidu Siteapp-->
+        <meta http-equiv="Cache-Control" content="no-siteapp"/>
+        <link rel="alternate icon" type="image/png" href="i/favicon.png">
+        <link rel="apple-touch-icon-precomposed" href="i/app-icon72x72@2x.png">
+        <meta name="apple-mobile-web-app-title" content="AMUI React"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <title>Pomosocial</title>
+
         <link rel="stylesheet" href=${cssPath} />
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
       </head>
       <body>
-        <div id="root">${html}</div>
+        <div id="root" style="height:100%;width:100%;overflow:hidden;">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
@@ -86,7 +107,7 @@ app.use((req, res) => {
       return res.status(404).end('Not found!');
     }
 
-    const initialState = { posts: [], post: {} };
+    const initialState = { pomos: [], pomo: {} };
 
     const store = configureStore(initialState);
 
