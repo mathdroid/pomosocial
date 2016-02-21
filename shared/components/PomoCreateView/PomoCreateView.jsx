@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars*/
 /* eslint-disable prefer-template*/
 import React, { Component, PropTypes } from 'react';
+import polyname from '../../../lib/polyname';
 
 class PomoCreateView extends Component {
   constructor(props, context) {
@@ -26,7 +27,7 @@ class PomoCreateView extends Component {
             <div className="content">
 
               <div className="header">Create new Pomodoro</div>
-              <div className="meta">created by: @username</div>
+              <div className="meta">created by: {'@'+polyname()}</div>
               <div className="ui form">
                 <div className="ui field">
                   <label>Title</label>
