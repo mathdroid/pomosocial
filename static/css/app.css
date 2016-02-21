@@ -96,5 +96,10 @@ background: hsl(1.9,20.1%,87.3%);
 }
 
 .hidden {
-  display: none;
+  display: none!important;
+}
+
+#main-header {
+  border: 0 0 0 0;
+  border-width: 0
 }

@@ -20,7 +20,7 @@ function Header(props, context) {
   // }
   return (
     <div className="ui container">
-      <div className="ui large secondary inverted pointing menu">
+      <div id="main-header" className="ui large secondary inverted pointing menu">
         <a className="toc item">
           <i className="sidebar icon"></i>
         </a>
