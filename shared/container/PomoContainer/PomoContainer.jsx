@@ -39,17 +39,19 @@ class PomoContainer extends Component {
           <Header onClick={this.handleClick} />
 
           <div className="ui text container">
-            <h1 className="ui inverted header">
-              Pomosocial
-            </h1>
-            <h2>Do pomodoros together.</h2>
-            <div className="ui huge primary button">Create New Pomodoro <i className="right arrow icon"></i></div>
+            <div className="ui two column middle aligned very relaxed stackable grid">
+              <div className="left aligned column">
+                <h1 className="ui inverted header">Pomosocial</h1>
+                <h2>Do pomodoros together.</h2>
+                <div className="ui huge primary button">Create New Pomodoro <i className="right arrow icon"></i></div>
+              </div>
+              <div className="left aligned column">
+                <PomoCreateView addPomo={this.add}
+                  showAddPomo={this.state.showAddPomo}
+                />
+              </div>
+            </div>
           </div>
-
-          <PomoCreateView addPomo={this.add}
-            showAddPomo={this.state.showAddPomo}
-          />
-
         </div>
 
         <div id="pomodoros" className="ui vertical stripe segment">

@@ -4,72 +4,66 @@ import fetch from 'isomorphic-fetch';
 
 const baseURL = typeof window === 'undefined' ? process.env.BASE_URL || (`http://localhost:${(process.env.PORT || 8000)}`) : '';
 
-export function addPost(post) {
+export function addPomo(pomo) {
   return {
-    type: ActionTypes.ADD_POST,
-    name: post.name,
-    title: post.title,
-    content: post.content,
-    slug: post.slug,
-    cuid: post.cuid,
-    _id: post._id,
+    type: ActionTypes.ADD_Pomo,
+    name: pomo.name,
+    title: pomo.title,
+    content: pomo.content,
+    slug: pomo.slug,
+    cuid: pomo.cuid,
+    _id: pomo._id,
   };
 }
 
-export function changeSelectedPost(slug) {
+export function changeSelectedPomo(slug) {
   return {
-    type: ActionTypes.CHANGE_SELECTED_POST,
+    type: ActionTypes.CHANGE_SELECTED_POMO,
     slug,
   };
 }
 
-export function addPostRequest(post) {
+export function addPomoRequest(pomo) {
   return (dispatch) => {
-    fetch(`${baseURL}/api/addPost`, {
-      method: 'post',
+    fetch(`${baseURL}/api/addPomo`, {
+      method: 'pomo',
       body: JSON.stringify({
-        post: {
-          name: post.name,
-          title: post.title,
-          content: post.content,
+        pomo: {
+          name: pomo.name,
+          title: pomo.title,
+          content: pomo.content,
         },
       }),
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
-    }).then((res) => res.json()).then(res => dispatch(addPost(res.post)));
+    }).then((res) => res.json()).then(res => dispatch(addPomo(res.pomo)));
   };
 }
 
-export function addSelectedPost(post) {
+
+export function addSelectedPomo(pomo) {
   return {
-    type: ActionTypes.ADD_SELECTED_POST,
-    post,
+    type: ActionTypes.ADD_SELECTED_POMO,
+    pomo,
   };
 }
 
-export function getPostRequest(post) {
+export function getPomoRequest(pomo) {
   return (dispatch) => {
-    return fetch(`${baseURL}/api/getPost?slug=${post}`, {
+    return fetch(`${baseURL}/api/getPomo?slug=${pomo}`, {
       method: 'get',
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
-    }).then((response) => response.json()).then(res => dispatch(addSelectedPost(res.post)));
+    }).then((response) => response.json()).then(res => dispatch(addSelectedPomo(res.pomo)));
   };
 }
 
-export function deletePost(post) {
+export function deletePomo(pomo) {
   return {
-    type: ActionTypes.DELETE_POST,
-    post,
-  };
-}
-
-export function addPosts(posts) {
-  return {
-    type: ActionTypes.ADD_POSTS,
-    posts,
+    type: ActionTypes.DELETE_POMO,
+    pomo,
   };
 }
 
@@ -77,14 +71,6 @@ export function addPomos(pomos) {
   return {
     type: ActionTypes.ADD_POMOS,
     pomos,
-  };
-}
-
-export function fetchPosts() {
-  return (dispatch) => {
-    return fetch(`${baseURL}/api/getPosts`).
-      then((response) => response.json()).
-      then((response) => dispatch(addPosts(response.posts)));
   };
 }
 
@@ -97,16 +83,18 @@ export function fetchPomos() {
   };
 }
 
-export function deletePostRequest(post) {
+
+
+export function deletePomoRequest(pomo) {
   return (dispatch) => {
-    fetch(`${baseURL}/api/deletePost`, {
-      method: 'post',
+    fetch(`${baseURL}/api/deletePomo`, {
+      method: 'pomo',
       body: JSON.stringify({
-        postId: post._id,
+        pomoId: pomo._id,
       }),
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
-    }).then(() => dispatch(deletePost(post)));
+    }).then(() => dispatch(deletePomo(pomo)));
   };
 }

@@ -32,7 +32,6 @@ import pomos from './routes/api';
 // import dummyData from './dummyData';
 import serverConfig from './config';
 
-import polyname from '../lib/polyname';
 
 // MongoDB Connection
 mongoose.connect(serverConfig.mongoURL, (error, connection) => {
@@ -51,7 +50,6 @@ app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../static')));
 app.use('/api', pomos);
 
-// let uname = polyname();
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {

@@ -13,6 +13,7 @@ export function getPomos(req, res) {
 }
 
 export function addPomo(req, res) {
+  console.log(req);
   if (!req.body.pomo.name || !req.body.pomo.title || !req.body.pomo.content) {
     return res.status(403).end();
   }

@@ -23,9 +23,8 @@ class PomoCreateView extends Component {
     const cls = 'ui container ' + (this.props.showAddPomo ? '' : 'hidden');
     return (
         <div className={cls}>
-          <div className="ui card">
+          <div className="ui centered card">
             <div className="content">
-
               <div className="header">Create new Pomodoro</div>
               <div className="meta">created by: {'@'+polyname()}</div>
               <div className="ui form">
@@ -35,7 +34,7 @@ class PomoCreateView extends Component {
                 </div><div className="ui field">
                 <label>Description</label>
                 <textarea type="text" placeholder="Short description" rows="2" ref="content"></textarea>
-              </div><div className="ui right labeled input">
+              </div><div className="ui fluid multiple search right labeled input">
               <input type="text" placeholder="Enter categories" ref="name" />
               <a className="ui tag label">
                 Add Tags

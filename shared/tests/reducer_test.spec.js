@@ -1,78 +1,78 @@
 /* eslint no-unused-vars: 0 */
 import expect from 'expect';
-import postReducer from '../redux/reducers/reducer';
+import pomoReducer from '../redux/reducers/reducer';
 import deepFreeze from 'deep-freeze';
 import * as ActionTypes from '../redux/constants/constants';
 
 describe('reducer tests', () => {
-  it('action ADD_POST is working', () => {
-    const stateBefore = { posts: [], post: null };
-    const stateAfter = { posts: [{
+  it('action ADD_POMO is working', () => {
+    const stateBefore = { pomos: [], pomo: null };
+    const stateAfter = { pomos: [{
       name: 'prank',
-      title: 'first post',
+      title: 'first pomo',
       content: 'Hello world!',
       _id: null,
       cuid: null,
-      slug: 'first-post',
-    }], post: null };
+      slug: 'first-pomo',
+    }], pomo: null };
 
     const action = {
-      type: ActionTypes.ADD_POST,
+      type: ActionTypes.ADD_POMO,
       name: 'prank',
-      title: 'first post',
+      title: 'first pomo',
       content: 'Hello world!',
       _id: null,
       cuid: null,
-      slug: 'first-post',
+      slug: 'first-pomo',
     };
     deepFreeze(stateBefore);
     deepFreeze(action);
-    expect(stateAfter).toEqual(postReducer(stateBefore, action));
+    expect(stateAfter).toEqual(pomoReducer(stateBefore, action));
   });
 
-  it('action ADD_SELECTED_POST is working', () => {
+  it('action ADD_SELECTED_POMO is working', () => {
     const stateBefore = {
-      posts: [{
+      pomos: [{
         name: 'prank',
-        title: 'first post',
+        title: 'first pomo',
         content: 'Hello world!',
         _id: null,
-        slug: 'first-post',
+        slug: 'first-pomo',
 
       }],
-      selectedPost: null,
+      selectedPomo: null,
     };
 
     const stateAfter = {
-      posts: [{
+      pomos: [{
         name: 'prank',
-        title: 'first post',
+        title: 'first pomo',
         content: 'Hello world!',
         _id: null,
-        slug: 'first-post',
+        slug: 'first-pomo',
       }],
-      post: {
+      pomo: {
         name: 'prank',
-        title: 'first post',
+        title: 'first pomo',
         content: 'Hello world!',
         _id: null,
-        slug: 'first-post',
+        slug: 'first-pomo',
       },
     };
 
     const action = {
-      type: ActionTypes.ADD_SELECTED_POST,
-      post: {
+      type: ActionTypes.ADD_SELECTED_POMO,
+      pomo: {
         name: 'prank',
-        title: 'first post',
+        title: 'first pomo',
         content: 'Hello world!',
         _id: null,
-        slug: 'first-post',
+        slug: 'first-pomo',
       },
     };
 
     deepFreeze(stateBefore);
     deepFreeze(action);
-    expect(stateAfter).toEqual(postReducer(stateBefore, action));
+    expect(stateAfter).toEqual(pomoReducer(stateBefore, action));
   });
 });
